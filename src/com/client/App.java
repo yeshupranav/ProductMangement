@@ -1,5 +1,6 @@
 package com.client;
 
+import java.sql.SQLException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
@@ -11,8 +12,15 @@ import com.bean.Laptop;
 import com.bean.Microsoft;
 import com.bean.Product;
 import com.bean.Tally;
+import com.exception.DuplicateProductIdExcp;
+import com.product.dao.DatabaseConnection;
+import com.product.dao.DatabaseConnectionImpl;
+import com.product.dao.DeskTopDao;
+import com.product.dao.DeskTopDaoImpl;
 
 public class App {
+
+	static DeskTopDao d = new DeskTopDaoImpl();
 
 	public static void main(String[] args) {
 
@@ -108,10 +116,10 @@ public class App {
 
 		Desktop d1 = new Desktop(111, "Dell", new Date(), 221, "wires", w1, 8, 500, "XP");
 		Laptop l1 = new Laptop(112, "Lenovo", new Date(), 222, "wires", w1, 4, 100, "Laptop");
-		HomeTheater h1 = new HomeTheater(115, "Bose", new Date(), 223, "speakers", w2, 1.2, 20.4, "Home Theater");
+		HomeTheater h1 = new HomeTheater(113, "Bose", new Date(), 223, "speakers", w2, 1.2, 20.4, "Home Theater");
 		CarDeck c1 = new CarDeck(114, "JVC", new Date(), 224, "speakers", w2, 0.7, 10.7, "Car deck");
 		Tally t1 = new Tally(115, ".NET", new Date(), "Tally definition", "Tally", 8.1, 100);
-		Microsoft m1 = new Microsoft(115, "Microsoft", new Date(), "C++", "Unix", 10.1, 250);
+		Microsoft m1 = new Microsoft(116, "Microsoft", new Date(), "C++", "Unix", 10.1, 250);
 
 		int a1[] = new int[6];
 
@@ -155,6 +163,12 @@ public class App {
 		arr[4] = t1;
 		arr[5] = m1;
 
+		try {
+			d.adddesktop(d1);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		return arr;
 	}
 
