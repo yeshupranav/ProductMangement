@@ -1,4 +1,4 @@
-package com.client;
+package com.exception;
 
 public class DuplicateProductIdExcp extends Exception {
 	
