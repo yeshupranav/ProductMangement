@@ -1,4 +1,4 @@
-package com.product;
+package com.product.dao;
 
 public class DeskTop {
 	private String Types;
