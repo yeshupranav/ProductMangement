@@ -20,9 +20,9 @@ import com.product.dao.DeskTopDaoImpl;
 
 public class App {
 
-	static DeskTopDao d = new DeskTopDaoImpl();
+	 static DeskTopDao desktop = new DeskTopDaoImpl();
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws SQLException {
 
 		Product[] arr = inputData();
 
@@ -109,12 +109,12 @@ public class App {
 		}
 	}
 
-	private static Product[] inputData() {
+	private static Product[] inputData() throws SQLException {
 
 		Dimension w1 = new Dimension(10, 20, 30);
 		Dimension w2 = new Dimension(4, 7, 2);
 
-		Desktop d1 = new Desktop(111, "Dell", new Date(), 221, "wires", w1, 8, 500, "XP");
+		Desktop d = new Desktop(111, "Dell", new Date(), 221, "wires", w1, 8, 500, "XP");
 		Laptop l1 = new Laptop(112, "Lenovo", new Date(), 222, "wires", w1, 4, 100, "Laptop");
 		HomeTheater h1 = new HomeTheater(113, "Bose", new Date(), 223, "speakers", w2, 1.2, 20.4, "Home Theater");
 		CarDeck c1 = new CarDeck(114, "JVC", new Date(), 224, "speakers", w2, 0.7, 10.7, "Car deck");
@@ -123,7 +123,7 @@ public class App {
 
 		int a1[] = new int[6];
 
-		a1[0] = d1.getPid();
+		a1[0] = d.getPid();
 		a1[1] = l1.getPid();
 		a1[2] = h1.getPid();
 		a1[3] = c1.getPid();
@@ -156,19 +156,14 @@ public class App {
 		System.out.println();
 
 		Product arr[] = new Product[6];
-		arr[0] = d1;
+		arr[0] = d;
 		arr[1] = l1;
 		arr[2] = h1;
 		arr[3] = c1;
 		arr[4] = t1;
 		arr[5] = m1;
 
-		try {
-			d.adddesktop(d1);
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		desktop.adddesktop(d);
 		return arr;
 	}
 
