@@ -25,4 +25,6 @@ public class Desktop extends Computer {
 		return "Desktop [name=" + name + "]";
 	}
 
+
+
 }
